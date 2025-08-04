@@ -9,39 +9,55 @@
   background-color: bisque;
   padding: 5px;
   border-radius: 5px;
+  margin: 10px;
 }
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.btn-accent {
+  background-color: rgb(92, 73, 175);
+  color: black;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.btn-sucess {
+  background-color: teal;
+  color: white;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn-error {
+  background-color: crimson;
+  color: black;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: #5e7087;
+}
+.guvi-card {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 250px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: #fff;
+  padding: 10px;
+  justify-content: space-between;
+  font-size: 14px;
 }
 
-.card {
-  padding: 2em;
+.guvi-card:hover {
+  border: 1px solid blue;
 }
 
-.read-the-docs {
-  color: #888;
+.card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.all-card {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
