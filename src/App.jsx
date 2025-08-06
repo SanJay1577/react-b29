@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
+import GuviCard from "./Components/GuviCard.jsx";
+import { CardHeader } from "./Components/CardHeader.jsx";
 
 const data = [
   {
@@ -113,11 +115,27 @@ const data = [
 ];
 
 function App() {
+  //initilization - props={}
+  const [totalIntrested, setTotalIntrested] = useState(0);
+  const [allData, setAllData] = useState([]);
+
+  //mounting
+  useEffect(() => {
+    console.log("mounting happend");
+    setAllData(data);
+  }, []);
+
   return (
     <>
+      <CardHeader intrested={totalIntrested} />
       <div className="all-card">
-        {data.map((course, idx) => (
-          <GuviCard courseDetails={course} />
+        {allData.map((course, idx) => (
+          <GuviCard
+            courseDetails={course}
+            key={idx}
+            setTotalIntrested={setTotalIntrested}
+            totalIntrested={totalIntrested}
+          />
         ))}
       </div>
     </>
@@ -125,71 +143,3 @@ function App() {
 }
 
 export default App;
-
-function Button({ name, variant }) {
-  //let props = {name : "save", variant="btn btn-sucess"}
-  //let {name, varaint} = props
-  return (
-    <div id="my-btn">
-      <button className={variant}>{name}</button>
-    </div>
-  );
-}
-
-function GuviCard({ courseDetails }) {
-  function convertEpochToTime(epoch) {
-    let milliseconds = epoch * 1000;
-    let newDate = new Date(milliseconds);
-    return newDate.toLocaleTimeString().slice(0, 5);
-  }
-  function getType(type) {
-    if (type == "WE") {
-      return "Week End";
-    } else if (type == "WD") {
-      return "Weed Day";
-    } else {
-      return "NIL";
-    }
-  }
-
-  return (
-    <div className="guvi-card">
-      <TopContent
-        courseDetails={courseDetails}
-        convertEpochToTime={convertEpochToTime}
-      />
-      <MiddleContent courseDetails={courseDetails} />
-      <Bottomcard courseDetails={courseDetails} getType={getType} />
-    </div>
-  );
-}
-
-function TopContent({ convertEpochToTime, courseDetails }) {
-  return (
-    <div className="flex-row">
-      <div>{new Date().toLocaleString().slice(0, 8)}</div>
-      <div>{`${convertEpochToTime(
-        courseDetails.startTime
-      )} to ${convertEpochToTime(courseDetails.endTime)}`}</div>
-    </div>
-  );
-}
-
-function MiddleContent({ courseDetails }) {
-  return (
-    <div className="card-content">
-      <h3>{courseDetails.name}</h3>
-      <div style={{ color: "#5e7087" }}>{courseDetails.course.name}</div>
-      <div style={{ color: "#5e7087" }}>{courseDetails.language}</div>
-    </div>
-  );
-}
-
-function Bottomcard({ getType, courseDetails }) {
-  return (
-    <div className="flex-row">
-      <div>{getType(courseDetails.type)} </div>
-      <div>{courseDetails.students}</div>
-    </div>
-  );
-}
