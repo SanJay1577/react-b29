@@ -21,7 +21,7 @@ export default function MiddleContent({
   return (
     <div className="card-content">
       <h3>{courseDetails.name}</h3>
-      <div style={{ color: "#5e7087" }}>{courseDetails.course.name}</div>
+      <div style={{ color: "#5e7087" }}>{courseDetails.course_name}</div>
       <div style={{ color: "#5e7087" }}>{courseDetails.language}</div>
       {/* conditional rendering  */}
       {intrested ? (
