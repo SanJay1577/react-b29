@@ -23,7 +23,7 @@ const ServiceDetails = () => {
         alignItems: "center",
       }}
     >
-      <ServiceCard details={details} />
+      {details ? <ServiceCard details={details} /> : <></>}
     </Box>
   );
 };

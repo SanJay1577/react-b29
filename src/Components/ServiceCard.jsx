@@ -2,13 +2,12 @@ import React from "react";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
+import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
-import { useNavigate } from "react-router-dom";
 
 function ServiceCard({ details }) {
-  const navigate = useNavigate();
   return (
-    <Box onClick={() => navigate(`/services/${details.id}`)}>
+    <Box>
       <Paper
         elevation={3}
         sx={{
@@ -27,6 +26,14 @@ function ServiceCard({ details }) {
             <Typography>{details.vechicle_type}</Typography>
             <Typography>{details.date_of_delivery}</Typography>
             <Typography>{details.service_amount}</Typography>
+            <Box>
+              <Button color="secondary" variant="contained">
+                EDIT
+              </Button>
+              <Button color="error" variant="contained">
+                DELETE
+              </Button>
+            </Box>
           </Box>
         </Stack>
       </Paper>
