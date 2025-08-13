@@ -25,10 +25,32 @@ function App() {
         <Route
           exact
           path="/"
-          element={<Services serviceDetails={serviceDetails} error={error} />}
+          element={
+            <Services
+              serviceDetails={serviceDetails}
+              setServiceDetails={setServiceDetails}
+              error={error}
+            />
+          }
         />
-        <Route path="/services/add" element={<AddServiceDetails />} />
-        <Route path="/services/edit/:id" element={<EditServiceDetails />} />
+        <Route
+          path="/services/add"
+          element={
+            <AddServiceDetails
+              serviceDetails={serviceDetails}
+              setServiceDetails={setServiceDetails}
+            />
+          }
+        />
+        <Route
+          path="/services/edit/:id"
+          element={
+            <EditServiceDetails
+              serviceDetails={serviceDetails}
+              setServiceDetails={setServiceDetails}
+            />
+          }
+        />
         <Route path="/services/:id" element={<ServiceDetails />} />
         <Route path="/nopage" element={<h1>No Page</h1>} />
       </Routes>

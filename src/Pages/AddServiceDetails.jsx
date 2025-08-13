@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { REST_HOST_NAME, SERVICE_ENDPOINT } from "../backend";
 import { useNavigate } from "react-router-dom";
 
-const AddServiceDetails = () => {
+const AddServiceDetails = ({ serviceDetails, setServiceDetails }) => {
   const [service_provider, setServiceName] = useState("");
   const [vechicle_type, setVechicle_type] = useState("");
   const [vechicle_number, setVechicle_number] = useState();
@@ -14,6 +14,7 @@ const AddServiceDetails = () => {
   const [contact, setContact] = useState();
   const [location, setLocation] = useState("");
   const [insurance_due_date, setInsurance_due_date] = useState();
+
   const navigate = useNavigate();
   const createNewService = async () => {
     try {
@@ -38,6 +39,7 @@ const AddServiceDetails = () => {
       });
       let data = await response.json();
       if (data) {
+        setServiceDetails([...serviceDetails, data]);
         navigate("/");
       }
     } catch (error) {

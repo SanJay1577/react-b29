@@ -1,10 +1,16 @@
 import React from "react";
 import AllServiceCards from "../Components/AllServiceCards";
-
-const Services = ({ serviceDetails }) => {
+import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
+const Services = ({ serviceDetails, setServiceDetails }) => {
+  const navigate = useNavigate();
   return (
     <div>
-      <AllServiceCards serviceDetails={serviceDetails} />
+      <Button onClick={() => navigate("services/add")}>Add New Service</Button>
+      <AllServiceCards
+        serviceDetails={serviceDetails}
+        setServiceDetails={setServiceDetails}
+      />
     </div>
   );
 };
